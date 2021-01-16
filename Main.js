@@ -1,7 +1,8 @@
-chao.init(640, 480, chao.SCALING_MODE_NONE, "canvas");
+chao.init(640, 480, chao.SCALING_MODE_KEEP_RATIO, "duck_canvas");
 chao.backgroundColor = "#000000";
 chao.setImagesSmoothing(true);
 chao.setMouseVisibility(false);
+chao.pauseOnLostFocus = false;
 
 // ----- Them assets
 

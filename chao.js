@@ -214,6 +214,7 @@ var chao = {
 
 		chao.installVisibilityHandler();
 		chao.hasFocus = true;
+		chao.pauseOnLostFocus = true;
 
 		chao.images = [];
 		chao.smoothing = true;
@@ -331,6 +332,11 @@ var chao = {
 		if (chao.hasFocus == isFocused) {
 			return;
 		}
+
+		if (!pauseOnLostFocus) {
+			return;
+		}
+
 		if (isFocused) {
 			chao.hasFocus = true;
 			chao.lastTime = Date.now();
