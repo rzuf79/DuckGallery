@@ -333,7 +333,7 @@ var chao = {
 			return;
 		}
 
-		if (!pauseOnLostFocus) {
+		if (!chao.pauseOnLostFocus) {
 			return;
 		}
 
@@ -2263,9 +2263,12 @@ function Entity(name, x, y) {
 	};
 
 	this.addWithComponent = function (childEntity, component) {
-		var newEntity = this.add(childEntity);
-		if (newEntity) {
-			newEntity.addComponent(component);
+		if (typeof childEntity === "string" || childEntity instanceof String) {
+			childEntity = new Entity(childEntity);
+		}
+		this.add(childEntity);
+		if (childEntity) {
+			childEntity.addComponent(component);
 			return component;
 		}
 	};
@@ -3280,7 +3283,7 @@ function ComponentButton(image) {
 
 		this.imageKey = key;
 
-		this.sprite = this.entity.addWithComponent(new Entity("Button Image"), new ComponentSprite(this.imageKey));
+		this.sprite = this.entity.addWithComponent("Button Image", new ComponentSprite(this.imageKey));
 		this.sprite.entity.clickable = false;
 
 		// Update Entity's size to be the same as button's sprite
@@ -3293,14 +3296,14 @@ function ComponentButton(image) {
 			this.entity.remove(this.spritePressed.entity);
 		}
 
-		this.spritePressed = this.entity.addWithComponent(new Entity("Button Image Pressed"), new ComponentSprite(key));
+		this.spritePressed = this.entity.addWithComponent("Button Image Pressed", new ComponentSprite(key));
 		this.spritePressed.entity.clickable = false;
 		this.spritePressed.entity.visible = false;
 	};
 
 	this.setText = function (text, font, size) {
 		if (!this.text) {
-			this.text = this.entity.addWithComponent(new Entity("Button Text"), new ComponentText(font, text, size));
+			this.text = this.entity.addWithComponent("Button Text", new ComponentText(font, text, size));
 			this.text.align = "left";
 			this.text.entity.clickable = false;
 			this.entity.add(this.text.entity);

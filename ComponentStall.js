@@ -57,11 +57,11 @@ function ComponentStall() {
 		var tree2 = chao.helpers.createSprite(this.middleground, "Tree", "tree_oak", 510, 120);
 		tree2.entity.rotation = 10;
 		this.gameplayLayers[0] = this.middleground.add(new Entity("Gameplay Layer 1"));
-		var grass = this.middleground.addWithComponent(new Entity("Waves"), new ComponentWave("grass2", 300, 0.0));
+		var grass = this.middleground.addWithComponent("Waves", new ComponentWave("grass2", 300, 0.0));
 		this.gameplayLayers[1] = this.middleground.add(new Entity("Gameplay Layer 2"));
-		this.middleground.addWithComponent(new Entity("Waves"), new ComponentWave("water1", 370, Math.PI*0.6));
+		this.middleground.addWithComponent("Waves", new ComponentWave("water1", 370, Math.PI*0.6));
 		this.gameplayLayers[2] = this.middleground.add(new Entity("Gameplay Layer 2"));
-		this.middleground.addWithComponent(new Entity("Waves"), new ComponentWave("water2", 400, Math.PI*1.2));
+		this.middleground.addWithComponent("Waves", new ComponentWave("water2", 400, Math.PI*1.2));
 		this.gameplayLayers[0].makeFullscreen();
 		this.gameplayLayers[1].makeFullscreen();
 		this.gameplayLayers[2].makeFullscreen();

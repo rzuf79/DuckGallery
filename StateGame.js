@@ -11,20 +11,20 @@ function StateGame(){
 	this.score = 0;
 
 	this.create = function(){
-		this.camera = this.addWithComponent(new Entity("Camera"), new ComponentCamera());
+		this.camera = this.addWithComponent("Camera", new ComponentCamera());
 		this.camera.entity.makeFullscreen();
 
-		this.stall = this.camera.entity.addWithComponent(new Entity("Stall"), new ComponentStall());
+		this.stall = this.camera.entity.addWithComponent("Stall", new ComponentStall());
 
-		this.gun = this.camera.entity.addWithComponent(new Entity("Gun"), new ComponentGun(this));
+		this.gun = this.camera.entity.addWithComponent("Gun", new ComponentGun(this));
 
-		this.hud = this.addWithComponent(new Entity("HUD"), new ComponentHUD());
+		this.hud = this.addWithComponent("HUD", new ComponentHUD());
 
-		this.crosshair = this.hud.entity.addWithComponent(new Entity("Crosshair"), new ComponentCrosshair());
+		this.crosshair = this.hud.entity.addWithComponent("Crosshair", new ComponentCrosshair());
 
-		this.particlePlayer = this.addWithComponent(new Entity("Particle Player"), new ComponentParticlePlayer());
+		this.particlePlayer = this.addWithComponent("Particle Player", new ComponentParticlePlayer());
 
-		this.addWithComponent(new Entity("Target Spawner"), new ComponentTargetSpawner(this, this.stall));
+		this.addWithComponent("Target Spawner", new ComponentTargetSpawner(this, this.stall));
 
 		// chao.helpers.createFpsCounter(this, 16);
 	};

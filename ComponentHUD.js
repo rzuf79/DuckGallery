@@ -58,8 +58,7 @@ function ComponentHUD() {
 
 	this.createFancyText = function(text, glyphs) {
 		glyphs = glyphs || Reg.glyphsImagesSmall;
-		var newText = this.entity.addWithComponent(new Entity("Text Score"),
-			new ComponentSpriteText(Reg.glyphsLetters, glyphs));
+		var newText = this.entity.addWithComponent("Text Score", new ComponentSpriteText(Reg.glyphsLetters, glyphs));
 		newText.setText(text);
 		return newText;
 	};
